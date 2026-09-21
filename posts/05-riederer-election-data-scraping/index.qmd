@@ -1,10 +1,10 @@
 ---
-title: "Your Post Title"  
+title: "Election Data Web Scraping"  
 author: 
   - name: "Emily Riederer"   
     url: "emilyriederer@gmail.com"
     affiliation: "Data Science @ Capital One"                    
-date: "2026-09-21"                               
+date: "2026-09-28"                               
 image: "featured.png"                             
 categories: [scraping, automation, data] # lower-case tags (reuse existing ones where you can)
 ---
@@ -38,15 +38,17 @@ I've been tracking my more recent travails updating pre-existing data pipelines 
 
 ## Analysis
 
-I think a lot of people know about basic web scraping already, so here, I will demonstrate my favorite and lesser used pattern: headless browser automation. A nice trick can be to use the python `Playwright` library to navigate a browser -- programmatically telling it what buttons to click, files to download, etc. just as if you were moving through the page yourself. 
+I think a lot of people know about basic web scraping already, so here, I will demonstrate my favorite and lesser used pattern: headless browser automation. While it has a crazy name, the simple idea is to ask your computer to do very human steps of navigating a browser: looking, finding, clicking, selecting, waiting, refreshing, etc. This is easily down with the python package `Playwright`. 
 
 To navigate and download files from the [Texas Secretary of State], I wanted to follow the steps illustrated below:
 
 ![](tx.gif)
 
-This is accomplished by this relatively minial [script](https://github.com/emilyriederer/data-scraping-states/blob/main/04-browserauto-tx.py).
+This is accomplished by this relatively minial [script](https://github.com/emilyriederer/data-scraping-states/blob/main/04-browserauto-tx.py). The real trick is using your browser's developer tools to identify what fields you want to target. 
 
-```
+```{python}
+#| eval: false
+
 from playwright.sync_api import sync_playwright
 import datetime
 
